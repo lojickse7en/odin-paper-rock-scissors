@@ -1,4 +1,4 @@
-// keep score based on computerSelection and playerSelection
+// keep score based on computerSelection and playerSelection??
 let game = () => {
   let playerScore = 0;
   let computerScore = 0;
