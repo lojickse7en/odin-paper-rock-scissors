@@ -1,13 +1,24 @@
-// keep score based on computerSelection and playerSelection??
+// keep score based on computerSelection and playerSelection
 let game = () => {
   let playerScore = 0;
   let computerScore = 0;
-  //loops through the code block
-  for (let i = 1; i <= 5; i++) {
-    //prompts the player to enter a response (paper, roc or scissors)
-    const playerSelection = prompt(
-      'You vs. the Computer (best of 5): choose Paper, Rock or Scissors'
-    ).toLowerCase();
+
+  // for (let i = 1; i <= 5; i++) {
+  //   const playerSelection = prompt(
+  //     'You vs. the Computer (best of 5): choose Paper, Rock or Scissors'
+  //   ).toLowerCase();
+  //This will replace the player input of paper,rock or scissors. Instead of inputting the value through prompt, it should just have the options on the UI and return the corresponding value
+  let buttonSelections = document.querySelectorAll('.btn');
+  //create an event listener so that when any of the buttons are clicked, it runs the playerSelection variable (from above). The result should be used in the playRound function.
+  buttonSelections.forEach((buttonSelection) => {
+    buttonSelection.addEventListener('click', (e) => {
+      const selectionName = buttonSelection.textContent.toLowerCase();
+      makeSelection(selectionName);
+    });
+  });
+  makeSelection = (selection) => {
+    const playerSelection = selection;
+
     //function that generates a random (paper, rock or scissors) response for the computer. Returns the value
     let computerPlay = () => {
       let prcOptions = ['paper', 'rock', 'scissors'];
@@ -100,7 +111,7 @@ Computer: ${computerScore}, Player: ${playerScore}`)
 
     roundResult = playRound(playerSelection, computerSelection);
     console.log(`${result},Computer:${computerScore}, Player: ${playerScore}`);
-  }
+  };
 
   if (computerScore > playerScore) {
     alert(`You lose 😵! 
