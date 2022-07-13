@@ -110,6 +110,9 @@ Computer: ${computerScore}, Player: ${playerScore}`)
     };
 
     roundResult = playRound(playerSelection, computerSelection);
+    // const resultText = document.getElementById('#results');
+    // resultText.textContent = 'hey';
+    // results.appendChild(resultText);
     console.log(`${result},Computer:${computerScore}, Player: ${playerScore}`);
   };
 
@@ -119,9 +122,14 @@ Computer: ${computerScore}, Player: ${playerScore}`);
   } else if (computerScore < playerScore) {
     alert(`You win 🎊! 
 Computer: ${computerScore}, Player: ${playerScore}`);
-  } else
+  } else if (
+    computerScore > playerScore &&
+    playerScore != 0 &&
+    computerScore != 0
+  ) {
     alert(`Issa tie 🤷🏾‍♂️! 
 Computer: ${computerScore} Player: ${playerScore}`);
+  }
 };
 
 game();
