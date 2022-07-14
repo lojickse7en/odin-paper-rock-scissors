@@ -2,6 +2,14 @@ body {
   background: rgba(0, 255, 221, 0.192);
 }
 
+h1 {
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  padding-bottom: 3rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 300;
+}
 .btn-container {
   display: flex;
   justify-content: center;
@@ -34,26 +42,29 @@ body {
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-items: center;
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
 }
 
 .results-container div {
   font-size: 3rem;
+  transition: 90ms;
 }
 
 .result-score {
   margin-left: 0.1rem;
   font-size: 2rem;
-  color: rgb(119, 119, 119);
+  color: rgb(238, 130, 8);
 }
 
-.result-selection {
+.result-selection-computer,
+.result-selection-player {
   padding-top: 2rem;
   opacity: 0.5;
 }
-.result-selection.winner {
+.result-selection-winner {
   opacity: 1;
-  font-size: 4rem;
+  padding-top: 2rem;
+  transform: scale(1.5);
 }
 /* .result-selection-container {
   display: flex;

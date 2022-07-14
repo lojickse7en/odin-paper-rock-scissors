@@ -21,7 +21,7 @@ let game = () => {
 
     //function that generates a random (paper, rock or scissors) response for the computer. Returns the value
     let computerPlay = () => {
-      let prcOptions = ['paper', 'rock', 'scissors'];
+      let prcOptions = ['✋🏾', '✊🏾', '✌🏾'];
 
       return prcOptions[Math.floor(Math.random() * prcOptions.length)];
     };
@@ -31,105 +31,128 @@ let game = () => {
 
     //compares values from computer and player. Returns appropriate string message
     let playRound = (playerSelection, computerSelection) => {
-      if (playerSelection === 'rock' && computerSelection === 'rock') {
-        return (
-          (result = 'Its a tie'),
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
+      addSelectionResult = (playerSelection, computerSelection) => {
+        const finalColumn = document.querySelector('.final-column');
+        const content = document.createElement('div');
+        content.classList.add('result-selection-player');
+        content.textContent = playerSelection;
+
+        finalColumn.after(content);
+
+        const content2 = document.createElement('div');
+        content2.classList.add('result-selection-computer');
+        content2.textContent = computerSelection;
+
+        finalColumn.after(content2);
+      };
+      function winnerComputer() {
+        const div = document.querySelector('.result-selection-computer');
+        div.classList.replace(
+          'result-selection-computer',
+          'result-selection-winner'
         );
-      } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+      }
+      function winnerPlayer() {
+        const div = document.querySelector('.result-selection-player');
+        div.classList.replace(
+          'result-selection-player',
+          'result-selection-winner'
+        );
+      }
+      if (playerSelection === '✊🏾' && computerSelection === '✊🏾') {
+        return addSelectionResult(playerSelection, computerSelection);
+      } else if (playerSelection === '✊🏾' && computerSelection === '✋🏾') {
         return (
-          (result = 'You lose😭! Paper beats rock'),
+          addSelectionResult(playerSelection, computerSelection),
           computerScore++,
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
+          winnerComputer()
         );
-      } else if (
-        playerSelection === 'rock' &&
-        computerSelection === 'scissors'
-      ) {
+      } else if (playerSelection === '✊🏾' && computerSelection === '✌🏾') {
         return (
-          (result = 'You win😎! Rock beats scissors'),
+          addSelectionResult(playerSelection, computerSelection),
           playerScore++,
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
+          winnerPlayer()
         );
-      } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+      } else if (playerSelection === '✋🏾' && computerSelection === '✊🏾') {
         return (
-          (result = 'You win😎! Paper beats rock'),
+          addSelectionResult(playerSelection, computerSelection),
           playerScore++,
-          alert(`${result},
-Computer: ${computerScore}, Player: ${playerScore}`)
+          winnerPlayer()
         );
-      } else if (playerSelection === 'paper' && computerSelection === 'paper') {
+      } else if (playerSelection === '✋🏾' && computerSelection === '✋🏾') {
+        return addSelectionResult(playerSelection, computerSelection);
+      } else if (playerSelection === '✋🏾' && computerSelection === '✌🏾') {
         return (
-          (result = 'Its a tie'),
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
-        );
-      } else if (
-        playerSelection === 'paper' &&
-        computerSelection === 'scissors'
-      ) {
-        return (
-          (result = 'You lose😭! Scissors beats paper'),
+          addSelectionResult(playerSelection, computerSelection),
           computerScore++,
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
+          winnerComputer()
         );
-      } else if (
-        playerSelection === 'scissors' &&
-        computerSelection === 'rock'
-      ) {
+      } else if (playerSelection === '✌🏾' && computerSelection === '✊🏾') {
         return (
-          (result = 'You lose😭! Rock beats scissors'),
+          addSelectionResult(playerSelection, computerSelection),
           computerScore++,
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
+          winnerComputer()
         );
-      } else if (
-        playerSelection === 'scissors' &&
-        computerSelection === 'paper'
-      ) {
+      } else if (playerSelection === '✌🏾' && computerSelection === '✋🏾') {
         return (
-          (result = 'You win😎! Scissors beats paper'),
+          addSelectionResult(playerSelection, computerSelection),
           playerScore++,
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
+          winnerPlayer()
         );
-      } else if (
-        playerSelection === 'scissors' &&
-        computerSelection === 'scissors'
-      ) {
-        return (
-          (result = 'Its a tie'),
-          alert(`${result}
-Computer: ${computerScore}, Player: ${playerScore}`)
-        );
+      } else if (playerSelection === '✌🏾' && computerSelection === '✌🏾') {
+        return addSelectionResult(playerSelection, computerSelection);
       } else return alert('You can only type, paper, rock or scissors 😕');
     };
 
-    roundResult = playRound(playerSelection, computerSelection);
-    // const resultText = document.getElementById('#results');
-    // resultText.textContent = 'hey';
-    // results.appendChild(resultText);
-    console.log(`${result},Computer:${computerScore}, Player: ${playerScore}`);
+    playRound(playerSelection, computerSelection);
+    const resultTextC = document.querySelector('.result-score.computer');
+    resultTextC.textContent = `${computerScore}`;
+
+    const resultTextP = document.querySelector('.result-score.player');
+    resultTextP.textContent = `${playerScore}`;
+    // resultText.appendChild(resultText);
+    // console.log(`${result},Computer:${computerScore}, Player: ${playerScore}`);
   };
 
-  if (computerScore > playerScore) {
-    alert(`You lose 😵! 
-Computer: ${computerScore}, Player: ${playerScore}`);
-  } else if (computerScore < playerScore) {
-    alert(`You win 🎊! 
-Computer: ${computerScore}, Player: ${playerScore}`);
-  } else if (
-    computerScore > playerScore &&
-    playerScore != 0 &&
-    computerScore != 0
-  ) {
-    alert(`Issa tie 🤷🏾‍♂️! 
-Computer: ${computerScore} Player: ${playerScore}`);
-  }
+  //After 5 rounds one of the follow alerts below will run
+  //   if (computerScore > playerScore) {
+  //     alert(`You lose 😵!
+  // Computer: ${computerScore}, Player: ${playerScore}`);
+  //   } else if (computerScore < playerScore) {
+  //     alert(`You win 🎊!
+  // Computer: ${computerScore}, Player: ${playerScore}`);
+  //   } else if (
+  //     computerScore > playerScore &&
+  //     playerScore != 0 &&
+  //     computerScore != 0
+  //   ) {
+  //     alert(`Issa tie 🤷🏾‍♂️!
+  // Computer: ${computerScore} Player: ${playerScore}`);
+  //   }
 };
 
 game();
+
+// addSelectionResult = () => {
+//   const container = document.querySelector('.results-container');
+//   const content = document.createElement('div');
+//   content.classList.add('result-selection');
+//   content.textContent = '✌🏾';
+
+//   container.appendChild(content);
+
+//   // const container2 = document.querySelector('.results-container');
+//   const content2 = document.createElement('div');
+//   content2.classList.add('result-selection');
+//   content2.textContent = '✋🏾';
+
+//   container.appendChild(content2);
+// };
+
+// addSelectionResult();
+
+// function winner() {
+//   const div = document.querySelector('.result-selection');
+//   div.classList.replace('result-selection', 'result-selection.winner');
+// }
+// winner();
