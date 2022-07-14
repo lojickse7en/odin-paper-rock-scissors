@@ -7,7 +7,7 @@ let game = () => {
   //   const playerSelection = prompt(
   //     'You vs. the Computer (best of 5): choose Paper, Rock or Scissors'
   //   ).toLowerCase();
-  //This will replace the player input of paper,rock or scissors. Instead of inputting the value through prompt, it should just have the options on the UI and return the corresponding value
+  //This will replace the player input of paper, rock or scissors. Instead of inputting the value through prompt, it should just have the options on the UI and return the corresponding value
   let buttonSelections = document.querySelectorAll('.btn');
   //create an event listener so that when any of the buttons are clicked, it runs the playerSelection variable (from above). The result should be used in the playRound function.
   buttonSelections.forEach((buttonSelection) => {
@@ -33,17 +33,17 @@ let game = () => {
     let playRound = (playerSelection, computerSelection) => {
       addSelectionResult = (playerSelection, computerSelection) => {
         const finalColumn = document.querySelector('.final-column');
-        const content = document.createElement('div');
-        content.classList.add('result-selection-player');
-        content.textContent = playerSelection;
-
-        finalColumn.after(content);
 
         const content2 = document.createElement('div');
         content2.classList.add('result-selection-computer');
         content2.textContent = computerSelection;
 
         finalColumn.after(content2);
+        const content = document.createElement('div');
+        content.classList.add('result-selection-player');
+        content.textContent = playerSelection;
+
+        finalColumn.after(content);
       };
       function winnerComputer() {
         const div = document.querySelector('.result-selection-computer');
@@ -110,49 +110,15 @@ let game = () => {
 
     const resultTextP = document.querySelector('.result-score.player');
     resultTextP.textContent = `${playerScore}`;
-    // resultText.appendChild(resultText);
-    // console.log(`${result},Computer:${computerScore}, Player: ${playerScore}`);
-  };
 
-  //After 5 rounds one of the follow alerts below will run
-  //   if (computerScore > playerScore) {
-  //     alert(`You lose 😵!
-  // Computer: ${computerScore}, Player: ${playerScore}`);
-  //   } else if (computerScore < playerScore) {
-  //     alert(`You win 🎊!
-  // Computer: ${computerScore}, Player: ${playerScore}`);
-  //   } else if (
-  //     computerScore > playerScore &&
-  //     playerScore != 0 &&
-  //     computerScore != 0
-  //   ) {
-  //     alert(`Issa tie 🤷🏾‍♂️!
-  // Computer: ${computerScore} Player: ${playerScore}`);
-  //   }
+    if (playerScore === 5) {
+      alert(`Player: ${playerScore} Computer: ${computerScore}
+      You Won 🎊🎊!`);
+    } else if (computerScore === 5) {
+      alert(`Player: ${playerScore} Computer: ${computerScore}
+      Computer Won 😵😵`);
+    }
+  };
 };
 
 game();
-
-// addSelectionResult = () => {
-//   const container = document.querySelector('.results-container');
-//   const content = document.createElement('div');
-//   content.classList.add('result-selection');
-//   content.textContent = '✌🏾';
-
-//   container.appendChild(content);
-
-//   // const container2 = document.querySelector('.results-container');
-//   const content2 = document.createElement('div');
-//   content2.classList.add('result-selection');
-//   content2.textContent = '✋🏾';
-
-//   container.appendChild(content2);
-// };
-
-// addSelectionResult();
-
-// function winner() {
-//   const div = document.querySelector('.result-selection');
-//   div.classList.replace('result-selection', 'result-selection.winner');
-// }
-// winner();
