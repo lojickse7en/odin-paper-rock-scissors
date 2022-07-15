@@ -69,11 +69,13 @@ h1 {
 .result-selection-player {
   padding-top: 2rem;
   opacity: 0.5;
+  margin: 0 auto;
 }
 .result-selection-winner {
   opacity: 1;
-  padding-top: 2rem;
+  padding-top: 1rem;
   transform: scale(1.5);
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 800px) {
