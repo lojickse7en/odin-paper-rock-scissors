@@ -4,9 +4,11 @@
   margin: 0;
   padding: 0;
   border: 0;
+  max-width: 1000px;
 }
 body {
   background: rgba(0, 255, 221, 0.192);
+  /* width: 100%; */
 }
 
 p,
@@ -17,8 +19,9 @@ h1 {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 800;
 }
-.container {
-  width: 100%;
+.container2 {
+  display: flex;
+  justify-content: center;
 }
 .btn-container {
   display: flex;
@@ -27,7 +30,7 @@ h1 {
   gap: 4rem;
   padding-top: 2rem;
   padding-bottom: 4rem;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .btn {
@@ -36,7 +39,7 @@ h1 {
   border: none;
   cursor: pointer;
   transition: 90ms;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .btn:hover {
@@ -73,8 +76,14 @@ h1 {
   transform: scale(1.5);
 }
 
-/* @media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
   .btn {
-    background: rgb(238, 130, 8);
+    /* background: rgb(238, 130, 8); */
+    font-size: 50px;
   }
-} */
+  .results-container div,
+  .results-container span {
+    font-size: 20px;
+    /* background-color: plum; */
+  }
+}
